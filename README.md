@@ -17,6 +17,7 @@ This is a collection of exercices and infos to learn basics of python
 - `ls`: list of folder content (https://wiki.ubuntuusers.de/ls/)
 - `git`: (https://git-scm.com/docs/git)
     - `git clone`: clone new git project
-    - `git commit`: commit changes to project
+    - `git commit -am "{message}"`: commit changes to project {message} is the message of the changes
     - `git push`: pushes changes to server
     - `git status`: status of project
+    - `git pull`: get new changes from server
