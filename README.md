@@ -14,10 +14,13 @@ This is a collection of exercices and infos to learn basics of python
 
 ## Commands
 - `pwd`: shows path to current folder (https://wiki.ubuntuusers.de/pwd/)
-- `ls`: list of folder content (https://wiki.ubuntuusers.de/ls/)
+- `ls -al`: list of folder content (https://wiki.ubuntuusers.de/ls/)
+- `cd {directory}`: change dir to directory
 - `git`: (https://git-scm.com/docs/git)
     - `git clone`: clone new git project
     - `git commit -am "{message}"`: commit changes to project {message} is the message of the changes
     - `git push`: pushes changes to server
+    - `git add`: add files to git
     - `git status`: status of project
     - `git pull`: get new changes from server
+- `python {file}`: run python script where {file} is the filename to run
