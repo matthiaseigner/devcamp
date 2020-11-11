@@ -23,4 +23,4 @@ This is a collection of exercices and infos to learn basics of python
     - `git add`: add files to git
     - `git status`: status of project
     - `git pull`: get new changes from server
-- `python {file}`: run python script where {file} is the filename to run
+- `python3 {file}`: run python (version 3) script where {file} is the filename to run
