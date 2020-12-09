@@ -27,6 +27,7 @@ if __name__ == "__main__":
 
   # Mache eine Spalte 'size', die Lehrveranstaltungen mit mehr als 3 als groß, mit weniger als 3 ECTS als klein bezeichnet!
   # meint '<' eh kleiner-gleich? sonst würde ja etwas ausgeschlossen werden oder? 
+  # konnte das nicht kontrollieren, weil ich nicht herausgefunden habe, wie man gekürzte Dataframes im Terminal ganz anzeigt. 
   
   def get_size(x):
     size = pd.size
@@ -39,3 +40,5 @@ if __name__ == "__main__":
 
   ects_without_headers_2_df['size'] = ects_without_headers_df['ECTS'].apply(get_size)
   print(ects_without_headers_2_df)
+
+  

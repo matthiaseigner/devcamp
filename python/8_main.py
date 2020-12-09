@@ -10,3 +10,5 @@ if __name__ == "__main__":
   ects_without_headers_df = ects_df.dropna(subset=['ECTS'])
 
   print(ects_without_headers_df[['Prüfung']])
+
+#testchangeforgitcommit-m
