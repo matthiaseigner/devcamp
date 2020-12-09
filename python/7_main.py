@@ -11,6 +11,7 @@ def sum_of_sst(courses_df):
     
 if __name__ == "__main__": 
     ects_df = pd.read_csv('ects.csv')
+    print(ects_df)
 
     # print sum of ects
     sum_ects = sum_of_ects(ects_df)
