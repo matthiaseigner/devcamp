@@ -77,7 +77,11 @@ if __name__ == "__main__":
     mean = data_df.mean()
     print('-')
     print('data_df.mean')
-    print(mean)
+    print(mean) 
     
+
+    print test
+    print doubletest
+    changes made
 
 

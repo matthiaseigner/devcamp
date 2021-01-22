@@ -11,4 +11,3 @@ if __name__ == "__main__":
 
   print(ects_without_headers_df[['Prüfung']])
 
-#testchangeforgitcommit-m
