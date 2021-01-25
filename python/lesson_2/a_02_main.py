@@ -35,25 +35,20 @@ if __name__ == "__main__":
     teacher_fulltime_df = teachers_df[teachers_df['Values'] == 'Full-time equivalent']
     teacher_person_count_df = teachers_df[teachers_df['Values'] == 'Number of teaching staff']
 
-    teachers_grouped_by_year_df = teachers_df.groupby(['School year', 'Sex', 'Values']).agg({
-        'Number':'sum'})
+    teachers_grouped_by_year_df = teachers_df\
+        .groupby(['School year', 'Sex', 'Values'])\
+        .agg({'Number':'sum'})\
+        .unstack()\
+        .reset_index()\
+        .rename(columns={"Number": "", 0: "01"})\
 
-    print(type(teachers_grouped_by_year_df))
-    print(teachers_grouped_by_year_df) 
+    # School year Sex     Full-time...      Number of teach...
+    # 2015/16     female  75479.90          91380.00
+        
+    teachers_grouped_by_year_df.columns = [''.join([str(x) for x in col]).strip() for col in teachers_grouped_by_year_df.columns.values]
+    teachers_grouped_by_year_df = teachers_grouped_by_year_df.drop(columns=["01"])
 
-    # data_df = teachers_grouped_by_year_df[['Schoool year', 'Sex']]
-
-    # print(data_df)
-
-    # mask = (teachers_df['School year'] == '2017/18') & (teachers_df['Sex'] == 'male')
-    # male_in_2017_18_df = len(teachers_df[mask])
-
-    # print(male_in_2017_18_df)
-
-
-
-
-# want to use copied code: 'print the count of exams per teacher' from lesson_1/e_10_main.py
-#  semesters_df = ects_without_headers_df.groupby(['Prüfer/Prüferin']).agg({'Prüfer/Prüferin':'count', 'ECTS': 'sum', 'SSt.': 'sum', 'Note': 'mean'})
-#  semesters_df = semesters_df.rename(columns={'Prüfer/Prüferin': 'count'})
-#  print(semesters_df[semesters_df['count']>1].sort_values(by=['count'], ascending=False))
+    teachers_grouped_by_year_df["hours"] = teachers_grouped_by_year_df["Full-time equivalent"] * 38.5 / teachers_grouped_by_year_df["Number of teaching staff"]
+    
+    print(teachers_grouped_by_year_df)
+    
