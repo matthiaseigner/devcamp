@@ -36,19 +36,26 @@ if __name__ == "__main__":
     teacher_person_count_df = teachers_df[teachers_df['Values'] == 'Number of teaching staff']
 
     teachers_grouped_by_year_df = teachers_df\
-        .groupby(['School year', 'Sex', 'Values'])\
+        .groupby(['School year', 'Sex', 'Age in 5 years group', 'Values'])\
         .agg({'Number':'sum'})\
         .unstack()\
         .reset_index()\
         .rename(columns={"Number": "", 0: "01"})\
-
+            
     # School year Sex     Full-time...      Number of teach...
     # 2015/16     female  75479.90          91380.00
         
     teachers_grouped_by_year_df.columns = [''.join([str(x) for x in col]).strip() for col in teachers_grouped_by_year_df.columns.values]
     teachers_grouped_by_year_df = teachers_grouped_by_year_df.drop(columns=["01"])
 
-    teachers_grouped_by_year_df["hours"] = teachers_grouped_by_year_df["Full-time equivalent"] * 38.5 / teachers_grouped_by_year_df["Number of teaching staff"]
-    
-    print(teachers_grouped_by_year_df)
+    teachers_grouped_by_year_df['average_hours'] = teachers_grouped_by_year_df['Full-time equivalent']*38.5/teachers_grouped_by_year_df['Number of teaching staff']
+    def str_(data):
+        return f'{data:,.2f}'
+
+    teachers_grouped_by_year_df['average_hours'] = teachers_grouped_by_year_df['average_hours'].apply(str_)
+    teachers_grouped_by_year_df['Full-time equivalent'] = teachers_grouped_by_year_df['Full-time equivalent'].apply(str_)
+    teachers_grouped_by_year_df['Number of teaching staff'] = teachers_grouped_by_year_df['Number of teaching staff'].apply(str_)
+
+    mask = teachers_grouped_by_year_df['Age in 5 years group'] == '50 to 54 years'
+    print(teachers_grouped_by_year_df[mask])
     
